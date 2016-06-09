@@ -1,0 +1,26 @@
+{
+  "name": "wp-social-buttons",
+  "version": "1.0.0",
+  "author": "IS WEBDEV <is-webdev@kent.ac.uk>",
+  "homepage": "https://github.com/unikent/wp-social-buttons",
+  "repository": {
+    "type": "git",
+    "url": "git://unikent/wp-social-buttons"
+  },
+  "licenses": [
+    {
+      "type": "GPLv2",
+      "url": "https://opensource.org/licenses/GPL-2.0"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+
+    "load-grunt-tasks": "~1.0.0",
+    "grunt-sass": "^1.1.0",
+    "time-grunt": "~1.0.0"
+  }
+}
