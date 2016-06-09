@@ -1,3 +1,50 @@
+@import "node_modules/kent-theme/scss/_variables";
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+@mixin button-outline-variant($color) {
+    color: $color;
+    background-image: none;
+    background-color: transparent;
+    border-color: $color;
+
+    &:focus,
+    &.focus,
+    &:active,
+    &.active,
+    .open > &.dropdown-toggle {
+        color: #fff;
+        background-color: $color;
+        border-color: $color;
+    }
+    &:hover, &:active, &:focus{
+        color: #fff;
+        background-color: $color;
+        border-color: $color;
+    }
+
+    &.disabled,
+    &:disabled {
+        &:focus,
+        &.focus {
+            border-color: lighten($color, 20%);
+        }
+        &:hover, &:active, &:focus{
+            border-color: lighten($color, 20%);
+        }
+    }
+}
+
+
 @font-face {
   font-family: 'ksocial';
   src:url('font/ksocial.eot?-o3k7nu');
@@ -95,44 +142,44 @@
 
 }
 
-
-
-.kent-social-links{
-  padding: 0 !important;
-  list-style: none !important;
-  width:100%;
-  float: left;
-  clear: both;
-  margin: 0 -5px 10px 0 !important;
-  text-align: right;
-  & > li{
-    display: inline-block !important;
-    padding: 0 5px 0 5px!important;
-    margin: 0 !important;
-    &:before{
-      content: none !important;
-    }
+.kent-social-links {
+    position: relative;
+    overflow: hidden;
+    list-style: none !important;
+    padding: 0;
+    margin: 15px 0;
     a{
-      color: #FFF;
-      font-size: 20px !important;
-      line-height: 30px !important;
-      display: inline-block;
-      overflow: hidden;
-      text-decoration: none;
-      border-bottom: none;
-      padding: 3px 5px !important;
-      background-color: #D1D1D1;
-      vertical-align: middle !important;
-      &:hover{
-        background-color: #B4B4B4;
-        text-decoration: none;
-        border-bottom: none;
-        color: #fff;
-      }
-      i{
-        width: 26px;
-        text-align: center;
-      }
+        border: 1px solid transparent;
+        @include button-outline-variant(#AAA);
+        font-size:     1.7rem;
+        line-height:   1.9rem;
+        padding:       0;
+        border-radius: 50%;
+        width:         3rem;
+        height:        3rem;
+        text-align:    center;
+        float:         left;
+        margin-left:   .4rem;
+        margin-bottom: .4rem;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:before {
+            font-family: $font-family-kentfont;
+            line-height: 3rem;
+            line-height: calc(3rem); // for reasons unknown to science, this means IE11 will now actually listen to the rem value
+        }
+
+        @each $network, $color in $social-networks {
+            &.ksocial-#{$network} {
+                &:hover, &:focus, &:active {
+                    color:            #FFFFFF;
+                    background-color: $color;
+                    border-color:     $color;
+                }
+            }
+        }
     }
-  }
 }

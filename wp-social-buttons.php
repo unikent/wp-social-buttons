@@ -50,10 +50,10 @@ class KentSocialShare {
 			$link = str_replace(array('{url}', '{title}'), array($url, $title), $service['link']);
 			$icon =  $service['icon'];
 
-			$html .= "<li><a href='{$link}' target='_blank'><i class='ksocial-{$icon}' title='Share via {$service['name']}'></i></a></li>";
+			$html .= "<a href='{$link}' target='_blank' class='ksocial-{$icon}'><span class='sr-only'>Share via {$service['name']}</span></a>";
 		}
 
-		return '<ul class="kent-social-links">'.$html.'</ul>';
+		return '<div class="kent-social-links">'.$html.'</div>';
 	}
 
 }
@@ -111,7 +111,7 @@ function kent_register_social_buttons_customizer($wp_customize) {
 		'type' => 'option'
 	));
 
-	$wp_customize->add_control( new \WP_Customize_Control( $wp_customize, 'profile_links', array(
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'profile_links', array(
 		'label'        => __( 'Social Sharing Buttons Location', 'kent_wp' ),
 		'section'    => 'social_config',
 		'settings'   => 'kent_social_sharing',
@@ -125,4 +125,4 @@ function kent_register_social_buttons_customizer($wp_customize) {
 	) ) );
 
 }
-add_action('customize_register', 'kent_register_people_customizer');
+add_action('customize_register', 'kent_register_social_buttons_customizer');
