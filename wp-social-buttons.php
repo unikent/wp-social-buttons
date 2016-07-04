@@ -111,7 +111,7 @@ function kent_register_social_buttons_customizer($wp_customize) {
 		'type' => 'option'
 	));
 
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'profile_links', array(
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kent_social_sharing', array(
 		'label'        => __( 'Social Sharing Buttons Location', 'kent_wp' ),
 		'section'    => 'social_config',
 		'settings'   => 'kent_social_sharing',
